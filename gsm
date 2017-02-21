@@ -1,0 +1,18 @@
+void setup() {
+  Serial.begin(9600);
+  // put your setup code here, to run once:
+
+}
+
+void loop() {
+  Serial.print("AT+CMGF=1\r\n");
+  delay(5000);
+  Serial.print("AT+CMGS=\"");
+  Serial.print("1234567890");//enter your number
+  Serial.println("\"\r\n");
+  delay(2000);
+  Serial.print("hi!!!");//message
+  Serial.write(0x1A);
+  // put your main code here, to run repeatedly:
+while(1);
+}
