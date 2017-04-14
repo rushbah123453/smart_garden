@@ -1,5 +1,5 @@
-int readf=0,readf2=0;
-int  static flag=0,flag2=0;
+int readf=0,readf2=0,readf3=0;
+int  static flag=0,flag2=0,flag3=0;
  int static sensorValue1,sensorValue2;
 #include <SoftwareSerial.h>
 SoftwareSerial GPRS(7, 8); // RX, TX
@@ -72,7 +72,8 @@ void loop()
 {
   readf=0;
   readf2=0;
-  flag=0,flag2=0;
+  readf3=0;
+  flag=0,flag2=0,flag3=0;
    sensorValue1 = analogRead(A1);
    sensorValue2 = analogRead(A0);
      Serial.print("value of s1:- ");
@@ -101,6 +102,7 @@ if(readf==1)
   delay(15);
 readf=digitalRead(5);
 readf2=digitalRead(3);
+readf3=digitalRead(2);
 Serial.print(readf);
 if(flag==0)
 {
@@ -108,12 +110,12 @@ if(readf==1)
 {
   readf=0;
   //if(sensorValue1>600){
-  if( sensorValue1 >360){
+ // if( sensorValue1 >360){
   digitalWrite(10, LOW);
   delay(6000);
   flag=1;
    digitalWrite(10, HIGH);
-  }
+  //}
 
 }
  if(readf==0)
@@ -165,6 +167,48 @@ if(readf2==1)
 
 
 }
+
+
+
+if(flag3==0)
+{
+if(readf3==1)
+{
+
+  Serial.print("in flag3");
+  Serial.print(readf3);
+  readf3=0;
+  //if(sensorValue1>600){
+  digitalWrite(12, LOW);
+  delay(6000);
+  flag3=1;
+   digitalWrite(12, HIGH);
+  
+ /* if(readf==0 || readf2==0){
+     digitalWrite(10, HIGH);
+     digitalWrite(11, HIGH);}
+     delay(20);
+  Serial.print("relay on");
+  //}*/
+}
+ if(readf3==0)
+{
+  digitalWrite(12, HIGH);
+}
+
+
+
+
+
+
+
+}
+
+
+
+
+
+
 
 
 
